@@ -1,0 +1,13 @@
+.env
+client_secret_2_672895553617-mgnpuod8gc30nvk9r7ma4tahol3cfnp9.apps.googleusercontent.com.json
+logfile.log
+output.txt
+spread.xlsx
+spread_test.xlsx
+taki chuj
+token.pickle
+type_ids.txt
+send_mail_grok.py
+.idea/
+__pycache__/
+send_file_using_gmail.py

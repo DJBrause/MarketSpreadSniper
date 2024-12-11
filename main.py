@@ -2,10 +2,17 @@ import requests
 import pandas as pd
 from dotenv import load_dotenv
 import os
-import datetime
+import logging
 
 from constants import TYPE_ID_NAME_MAP, MINIMAL_SPREAD
-from send_file import send_email, get_services
+from send_file import send_email_with_attachment
+
+logging.basicConfig(
+    filename='logfile.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+)
+
 
 load_dotenv()
 
@@ -73,17 +80,14 @@ def main() -> None:
 
     df_combined.to_excel('spread.xlsx', sheet_name='spread', index=False)
 
-    services = get_services()
-    current_datetime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-    gmail_service = services["gmail"]
     sender = os.environ.get('EMAIL')
-    to = os.environ.get('EMAIL')
-    body = f"Price spread for Domain region. \nDate: {current_datetime}"
-    subject = f"Price spread report."
+    recipient = os.environ.get('RECIPIENTS')
+    aws_region = 'eu-central-1'
+    subject = "EVE Market Domain Region Spreads"
+    body_text = "Witaj, \nTabelka w załączniku."
+    attachment_path = os.path.join(current_directory, 'spread.xlsx')
 
-    file_path = os.path.join(current_directory, 'spread.xlsx')
-    send_email(gmail_service, sender, to, subject, body, file_path)
+    send_email_with_attachment(sender, recipient, aws_region, subject, body_text, attachment_path)
 
 
 if __name__ == '__main__':

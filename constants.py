@@ -1,5 +1,4 @@
 MINIMAL_SPREAD = 5000000
-JSON = 'client_secret_672895553617-mgnpuod8gc30nvk9r7ma4tahol3cfnp9.apps.googleusercontent.com.json'
 
 TYPE_ID_NAME_MAP = {
     19: "Spodumain",
