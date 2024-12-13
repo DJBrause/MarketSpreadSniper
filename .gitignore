@@ -4,10 +4,8 @@ logfile.log
 output.txt
 spread.xlsx
 spread_test.xlsx
-taki chuj
 token.pickle
 type_ids.txt
-send_mail_grok.py
 .idea/
 __pycache__/
 send_file_using_gmail.py

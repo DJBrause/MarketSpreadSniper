@@ -4170,6 +4170,9 @@ TYPE_ID_NAME_MAP = {
     86276: "'Seneschal' Mercenary Den Blueprint Crate",
     84318: "Tetrimon Capacitor Booster II",
     20189: "Fenrir",
+    22123: "Mid-grade Amulet Gamma",
+    37612: "True Sansha Warp Disruption Field Generator",
+    4306: "Naga",
 }
 
 REGION_IDS = [
