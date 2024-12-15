@@ -1,4 +1,12 @@
+import os
+
+TRADE_STATION_ID = 60008494
+DOMAIN_REGION_ID = 10000043
 MINIMAL_SPREAD = 5000000
+AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY')
+AWS_SECRET_KEY = os.environ.get('AWS_SECRET_KEY')
+AWS_REGION = os.environ.get('AWS_REGION')
+
 
 TYPE_ID_NAME_MAP = {
     19: "Spodumain",

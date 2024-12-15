@@ -1,5 +1,4 @@
 .env
-client_secret_2_672895553617-mgnpuod8gc30nvk9r7ma4tahol3cfnp9.apps.googleusercontent.com.json
 logfile.log
 output.txt
 spread.xlsx
@@ -8,4 +7,4 @@ token.pickle
 type_ids.txt
 .idea/
 __pycache__/
-send_file_using_gmail.py
+workfile.py

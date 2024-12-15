@@ -1,5 +1,3 @@
-import os
-
 import boto3
 from botocore.exceptions import ClientError
 from email.mime.multipart import MIMEMultipart
@@ -8,16 +6,15 @@ from email.mime.application import MIMEApplication
 from dotenv import load_dotenv
 import logging
 
+from constants import AWS_ACCESS_KEY, AWS_SECRET_KEY, AWS_REGION
+
 load_dotenv()
 
 
-def send_email_with_attachment(sender, recipient, aws_region, subject, body_text, attachment_path):
+def send_email_with_attachment(sender, recipient, subject, body_text, attachment_path):
     logging.info("Sending email.")
-    aws_access_key = os.environ.get('AWS_ACCESS_KEY')
-    aws_secret_key = os.environ.get('AWS_SECRET_KEY')
-
-    ses_client = boto3.client('ses', region_name=aws_region, aws_access_key_id=aws_access_key,
-                              aws_secret_access_key=aws_secret_key)
+    ses_client = boto3.client('ses', region_name=AWS_REGION, aws_access_key_id=AWS_ACCESS_KEY,
+                              aws_secret_access_key=AWS_SECRET_KEY)
     file_name = 'spread.xlsx'
 
     # Tworzenie obiektu wiadomości
