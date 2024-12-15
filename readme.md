@@ -1,6 +1,6 @@
 # EVE Market Spread Analyzer
 
-This project retrieves market orders from the EVE Online API for specific regions, processes the data to calculate profitable market spreads, and sends the results as an email attachment using AWS SES.
+This project retrieves market orders from the EVE Online API for specific regions, processes the data to calculate profitable market spreads, and sends the results as an email attachment using AWS SES daily using cronjob on EC2 instance.
 
 ## Features
 
