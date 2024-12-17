@@ -25,23 +25,6 @@ recipients_from_dotenv = os.environ.get('RECIPIENTS')
 gmail_scopes = os.environ.get('GMAIL_SCOPES')
 
 
-def get_item_names_from_buy_orders(input_buy_orders: dict) -> list:
-    names = [get_item_name_with_type_id(buy_order['type_id']) for buy_order in input_buy_orders]
-    return names
-
-
-def get_item_name_with_type_id(type_id: int) -> str:
-    type_id_url = f'https://esi.evetech.net/latest/universe/types/{type_id}/?datasource=tranquility&language=en'
-    result = requests.get(type_id_url).json()
-    return result['name']
-
-
-def get_type_ids_and_names_from_sell_orders(input_sell_orders: dict) -> dict:
-    type_ids_and_names = {sell_order['type_id']: get_item_name_with_type_id(sell_order['type_id'])
-                          for sell_order in input_sell_orders}
-    return type_ids_and_names
-
-
 def main() -> None:
     buy_orders_initial = requests.get(domain_buy_orders_url)
     sell_orders_initial = requests.get(domain_sell_orders_url)

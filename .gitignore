@@ -7,4 +7,4 @@ token.pickle
 type_ids.txt
 .idea/
 __pycache__/
-workfile.py
+typeids.csv
