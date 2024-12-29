@@ -19,7 +19,6 @@ This project retrieves market orders from the EVE Online API for specific region
   ```env
   EMAIL=<your_email_address>
   RECIPIENTS=<recipient_email_addresses>
-  GMAIL_SCOPES=<gmail_scopes>
   AWS_ACCESS_KEY=<aws_access_key>
   AWS_SECRET_KEY=<aws_secret_key>
   AWS_REGION=<aws_region>
