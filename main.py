@@ -3,6 +3,7 @@ import pandas as pd
 from dotenv import load_dotenv
 import os
 import logging
+import time
 
 from constants import TYPE_ID_NAME_MAP, MINIMAL_SPREAD, TRADE_STATION_ID, DOMAIN_REGION_ID
 from send_file import send_email_with_attachment
@@ -25,6 +26,25 @@ recipients_from_dotenv = os.environ.get('RECIPIENTS')
 gmail_scopes = os.environ.get('GMAIL_SCOPES')
 
 
+def fetch_with_retries(url, max_retries=5, backoff_factor=2):
+    """Fetch data from the API with retry logic."""
+    retries = 0
+    while retries < max_retries:
+        response = requests.get(url)
+        if response.status_code == 200:
+            try:
+                return response.json()
+            except ValueError:
+                logging.warning(f"Invalid JSON response: {response.text}")
+                return None
+        else:
+            logging.warning(f"Error fetching data: {response.json()}, retrying...\n Failed URL: {url}")
+            retries += 1
+            time.sleep(backoff_factor ** retries)  # Exponential backoff
+    logging.error(f"Failed to fetch data after {max_retries} retries.")
+    return None
+
+
 def main() -> None:
     buy_orders_initial = requests.get(domain_buy_orders_url)
     sell_orders_initial = requests.get(domain_sell_orders_url)
@@ -37,13 +57,11 @@ def main() -> None:
     final_buy_orders_list = []
 
     for buy_order_page in range(1, buy_order_pages):
-        buy_orders = requests.get(domain_buy_orders_url+f'&page={buy_order_page}')
-        buy_orders_dict = buy_orders.json()
+        buy_orders_dict = fetch_with_retries(domain_buy_orders_url+f'&page={buy_order_page}')
         final_buy_orders_list.extend(buy_orders_dict)
 
     for sell_order_page in range(1, sell_order_pages):
-        sell_orders = requests.get(domain_sell_orders_url+f'&page={sell_order_page}')
-        sell_orders_dict = sell_orders.json()
+        sell_orders_dict = fetch_with_retries(domain_sell_orders_url+f'&page={sell_order_page}')
         final_sell_orders_list.extend(sell_orders_dict)
 
     df_buy_orders = pd.DataFrame(final_buy_orders_list)
@@ -78,4 +96,7 @@ def main() -> None:
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception as e:
+        logging.error(e)

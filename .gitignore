@@ -8,3 +8,4 @@ type_ids.txt
 .idea/
 __pycache__/
 typeids.csv
+workfile.py
