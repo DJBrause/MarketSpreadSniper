@@ -4,3 +4,4 @@ pandas
 openpyxl
 boto3
 botocore
+xlsxwriter
