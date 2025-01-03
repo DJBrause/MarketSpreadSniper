@@ -5,6 +5,7 @@ load_dotenv()
 
 TRADE_STATION_ID = 60008494
 DOMAIN_REGION_ID = 10000043
+THE_FORGE_REGION_ID = 10000002
 MINIMAL_SPREAD = 10000000
 AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY')
 AWS_SECRET_KEY = os.environ.get('AWS_SECRET_KEY')
@@ -49250,6 +49251,18 @@ TYPE_ID_NAME_MAP = {
     370658: "Council's Modified Repair Tool",
     371027: "X-MS16 Snowball Launcher",
     85258: "Wightstorm Nirvana Booster III",
+    87121: "Crystalflake Comet - Limited",
+    85934: "Vibrant Truth Matte - Unlimited",
+    85267: "Wightstorm Cetana Booster IV",
+    85271: "Wightstorm Vitarka Booster IV",
+    85255: "Wightstorm Sunyata Booster IV",
+    85263: "Wightstorm Rapture Booster IV",
+    85936: "Incursive Ink Satin - Unlimited",
+    85938: "Winter�s Pale Gloss - Unlimited",
+    85275: "Wightstorm Manasikara Booster IV",
+    85259: "Wightstorm Nirvana Booster IV",
+    85238: "Potent 'Brainfreeze' Cerebral Accelerator",
+    85784: "Electroplated Wish Metallic - Limited",
 }
 
 REGION_IDS = [
