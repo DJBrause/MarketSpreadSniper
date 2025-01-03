@@ -106,7 +106,7 @@ def main() -> None:
 
     sender = os.environ.get('EMAIL')
     recipients = [item.strip() for item in os.getenv('RECIPIENTS', "").split(",") if item]
-    subject = "EVE Market Domain Region Spreads"
+    subject = "EVE Market Domain and The Forge Region Spreads"
     body_text = "Cześć, \nTabelka w załączniku. Spready zaczynają się od 10 mln ISK. \n\nPozdrawiam, \nPtysiu"
 
     for recipient in recipients:
